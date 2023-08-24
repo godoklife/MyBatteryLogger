@@ -1,0 +1,14 @@
+C:\Users\kimyongjun\RiderProjects\MyBatteryLogger\MyBatteryLogger\bin\Debug\MyBatteryLogger.exe.config
+C:\Users\kimyongjun\RiderProjects\MyBatteryLogger\MyBatteryLogger\bin\Debug\MyBatteryLogger.exe
+C:\Users\kimyongjun\RiderProjects\MyBatteryLogger\MyBatteryLogger\bin\Debug\MyBatteryLogger.pdb
+C:\Users\kimyongjun\RiderProjects\MyBatteryLogger\MyBatteryLogger\obj\Debug\MyBatteryLogger.csproj.AssemblyReference.cache
+C:\Users\kimyongjun\RiderProjects\MyBatteryLogger\MyBatteryLogger\obj\Debug\MyBatteryLogger.csproj.SuggestedBindingRedirects.cache
+C:\Users\kimyongjun\RiderProjects\MyBatteryLogger\MyBatteryLogger\obj\Debug\MyBatteryLogger.Properties.Resources.resources
+C:\Users\kimyongjun\RiderProjects\MyBatteryLogger\MyBatteryLogger\obj\Debug\MyBatteryLogger.csproj.GenerateResource.cache
+C:\Users\kimyongjun\RiderProjects\MyBatteryLogger\MyBatteryLogger\obj\Debug\MyBatteryLogger.csproj.CoreCompileInputs.cache
+C:\Users\kimyongjun\RiderProjects\MyBatteryLogger\MyBatteryLogger\obj\Debug\MyBatteryLogger.exe
+C:\Users\kimyongjun\RiderProjects\MyBatteryLogger\MyBatteryLogger\obj\Debug\MyBatteryLogger.pdb
+C:\Users\kimyongjun\RiderProjects\MyBatteryLogger\MyBatteryLogger\bin\Debug\ReaLTaiizor.dll
+C:\Users\kimyongjun\RiderProjects\MyBatteryLogger\MyBatteryLogger\bin\Debug\ReaLTaiizor.xml
+C:\Users\kimyongjun\RiderProjects\MyBatteryLogger\MyBatteryLogger\obj\Debug\MyBatteryLogger.csproj.CopyComplete
+C:\Users\kimyongjun\RiderProjects\MyBatteryLogger\MyBatteryLogger\obj\Debug\MyBatteryLogger.MyBatteryLoggerForm.resources
