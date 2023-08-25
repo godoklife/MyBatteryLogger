@@ -81,7 +81,9 @@ namespace MyBatteryLogger
         
         private string GetBatteryVoltage()
         {
-            
+            string result = string.Empty;
+
+            return result;
         }
         
         private void ResizeControls(object sender, EventArgs e)
@@ -93,7 +95,7 @@ namespace MyBatteryLogger
         {
             logTimer.Stop();
             string content = string.Empty;
-            
+            btnRefresh_Click(null, null);
             
             logTimer.Start();
         }
@@ -105,6 +107,7 @@ namespace MyBatteryLogger
         /// <param name="e"></param>
         private void btnRefresh_Click(object sender, EventArgs e)
         {
+            logTimer.Start();
             PowerStatus powerStatus = SystemInformation.PowerStatus;
             lblPrecentage.Text = $"남은 배터리: {powerStatus.BatteryLifePercent * 100}%, 상태: {powerStatus.BatteryChargeStatus}";
 
@@ -120,6 +123,10 @@ namespace MyBatteryLogger
                     Console.WriteLine($"{count} - {propertyData.Name}: {propertyData.Value}");
                     ListViewItem lvi = new ListViewItem(new string[] { propertyData.Name, propertyData.Value == null?string.Empty : propertyData.Value.ToString()});
                     lvMain.Items.Add(lvi);
+                    if (propertyData.Name == "BatteryStatus")
+                    {
+                        lblDatetime.Text = $"남은 배터리: {powerStatus.BatteryLifePercent * 100}%, 상태: {propertyData.Value}";
+                    }
                 }
                 
                 count++;
