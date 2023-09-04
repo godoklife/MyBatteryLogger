@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Management;
 using System.Text;
@@ -43,7 +44,7 @@ namespace MyBatteryLogger
 
             #region logTimer
             logTimer = new System.Windows.Forms.Timer();
-            logTimer.Interval = 1000;
+            logTimer.Interval = 3000;
             logTimer.Tick += logTimer_Tick;
             #endregion
 
@@ -94,8 +95,20 @@ namespace MyBatteryLogger
         private void logTimer_Tick(object sender, EventArgs e)
         {
             logTimer.Stop();
-            string content = string.Empty;
-            btnRefresh_Click(null, null);
+
+            PowerStatus ps = SystemInformation.PowerStatus;
+            if ((int)( ps.BatteryLifePercent * 100 ) != pastBatteryLifePercent)
+            {
+                string powerLineMsg = ps.PowerLineStatus == PowerLineStatus.Online
+                                          ? "연결됨"
+                                          : ps.PowerLineStatus == PowerLineStatus.Offline
+                                              ? "연결되지 않음"
+                                              : "알 수 없음";
+                pastBatteryLifePercent = (int)( ps.BatteryLifePercent * 100 );
+
+                WriteBatteryLog(pastBatteryLifePercent.ToString(), powerLineMsg);
+                lblPrecentage.Text = $"남은 배터리 : {pastBatteryLifePercent}%, 전원선: {powerLineMsg}";
+            }
             
             logTimer.Start();
         }
@@ -150,6 +163,17 @@ namespace MyBatteryLogger
             else
             {
                 logTimer.Start();
+            }
+        }
+
+        private void WriteBatteryLog(string pastBatteryLifePercent, string powerLineMsg)
+        {
+            string fileName = "MyBatteryLogger_"+DateTime.Now.ToString("yyyy-MM-dd");
+            
+            FileStream fs
+            if (File.Exists(Application.StartupPath + $@"\{fileName}.log"))
+            {
+                fs  = new FileStream()
             }
         }
     }
