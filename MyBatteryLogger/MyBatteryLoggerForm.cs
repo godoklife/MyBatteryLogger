@@ -40,7 +40,6 @@ namespace MyBatteryLogger
         public MyBatteryLoggerForm()
         {
             InitializeComponent();
-            // Sianged += Resizntrols;
 
             #region 트레이
             trayMenu = new ContextMenu();
@@ -87,7 +86,10 @@ namespace MyBatteryLogger
             #endregion
         }
 
-        private void ResizeControls(object sender, EventArgs e) { }
+        private void ResizeControls(object sender, EventArgs e)
+        {
+            // 창의 크기가 변경되면, 내부 컨트롤들의 크기도 조절해야 할듯?
+        }
 
         /// <summary>
         /// Tick
@@ -110,6 +112,10 @@ namespace MyBatteryLogger
 
                 WriteBatteryLog(pastBatteryLifePercent, pastPowerLineStatus.ToString());
                 lblPrecentage.Text = $"남은 배터리 : {pastBatteryLifePercent}%, 전원선: {pastPowerLineStatus.ToString()}";
+
+                ListViewItem item = new ListViewItem(new[] { DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), pastBatteryLifePercent.ToString() + "%", pastPowerLineStatus.ToString() });
+                listView1.Items.Add(item);
+                
             }
 
             logTimer.Start();
@@ -124,35 +130,35 @@ namespace MyBatteryLogger
         {
             // logTimer.Start();
 
-            Debug.WriteLine("Stopwatch.IsHighResolution: " + Stopwatch.IsHighResolution);
-            Debug.WriteLine("Stopwatch.Frequency: " + Stopwatch.Frequency);
-            Stopwatch sw = new Stopwatch();
-
-            PowerStatus ps;
-            BatteryChargeStatus psBatteryChargeStatus;
-            PowerLineStatus powerStatus = PowerLineStatus.Unknown;
-            float batteryLifePercent = 0f;
-            int batteryFullLifetime = 0;
-            int batteryLifeRemaining = 0;
-
-            ps = SystemInformation.PowerStatus;
-            psBatteryChargeStatus = ps.BatteryChargeStatus;
-            batteryLifePercent = ps.BatteryLifePercent;
-            powerStatus = ps.PowerLineStatus;
-            batteryFullLifetime = ps.BatteryFullLifetime;
-            batteryLifeRemaining = ps.BatteryLifeRemaining;
-            int convertedFloat = 0;
-
-            sw.Start();
-            for (int i = 0; i < 1; i++)
-            {
-                convertedFloat = (int)Math.Round(batteryLifePercent * 100);
-            }
-
-            WriteBatteryLog(convertedFloat, powerStatus.ToString());
-            sw.Stop();
-            Debug.WriteLine("sw.ElapsedMilliseconds: " + sw.ElapsedMilliseconds);
-            Debug.WriteLine("sw.Elapsed " + sw.Elapsed);
+            // Debug.WriteLine("Stopwatch.IsHighResolution: " + Stopwatch.IsHighResolution);
+            // Debug.WriteLine("Stopwatch.Frequency: " + Stopwatch.Frequency);
+            // Stopwatch sw = new Stopwatch();
+            //
+            // PowerStatus ps;
+            // BatteryChargeStatus psBatteryChargeStatus;
+            // PowerLineStatus powerStatus = PowerLineStatus.Unknown;
+            // float batteryLifePercent = 0f;
+            // int batteryFullLifetime = 0;
+            // int batteryLifeRemaining = 0;
+            //
+            // ps = SystemInformation.PowerStatus;
+            // psBatteryChargeStatus = ps.BatteryChargeStatus;
+            // batteryLifePercent = ps.BatteryLifePercent;
+            // powerStatus = ps.PowerLineStatus;
+            // batteryFullLifetime = ps.BatteryFullLifetime;
+            // batteryLifeRemaining = ps.BatteryLifeRemaining;
+            // int convertedFloat = 0;
+            //
+            // sw.Start();
+            // for (int i = 0; i < 1; i++)
+            // {
+            //     convertedFloat = (int)Math.Round(batteryLifePercent * 100);
+            // }
+            //
+            // WriteBatteryLog(convertedFloat, powerStatus.ToString());
+            // sw.Stop();
+            // Debug.WriteLine("sw.ElapsedMilliseconds: " + sw.ElapsedMilliseconds);
+            // Debug.WriteLine("sw.Elapsed " + sw.Elapsed);
 
             #region 기존 새로고침 버튼
             // PowerStatus powerStatus = SystemInformation.PowerStatus;
@@ -218,7 +224,7 @@ namespace MyBatteryLogger
             try
             {
                 StreamWriter sw = new StreamWriter(fullPath, true, Encoding.UTF8);
-                sw.WriteLine($"[{DateTime.Now,-24:yyyy-MM-dd hh:mm:ss}] - [배터리: {batteryPercentage,3}%] - [전원선: {powerLineMsg,-8}]");
+                sw.WriteLine($"[{DateTime.Now,-24:yyyy-MM-dd HH:mm:ss}] - [배터리: {batteryPercentage,3}%] - [전원선: {powerLineMsg,-8}]");
                 sw.Close();
             }
             catch (Exception e)
@@ -226,6 +232,5 @@ namespace MyBatteryLogger
                 Console.WriteLine(e);
             }
         }
-        
     }
 }

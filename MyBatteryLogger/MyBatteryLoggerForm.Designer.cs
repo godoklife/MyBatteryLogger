@@ -35,10 +35,11 @@ namespace MyBatteryLogger
             this.btnRefresh = new ReaLTaiizor.Controls.MetroButton();
             this.btnClose = new ReaLTaiizor.Controls.MetroButton();
             this.lblDatetime = new ReaLTaiizor.Controls.MetroLabel();
-            this.lvMain = new ReaLTaiizor.Controls.MaterialListView();
+            this.btnHide = new ReaLTaiizor.Controls.MetroButton();
+            this.listView1 = new ReaLTaiizor.Controls.MaterialListView();
             this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
-            this.btnHide = new ReaLTaiizor.Controls.MetroButton();
+            this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
             this.SuspendLayout();
             // 
             // metroStyleManager1
@@ -55,7 +56,7 @@ namespace MyBatteryLogger
             this.lblPrecentage.IsDerivedStyle = true;
             this.lblPrecentage.Location = new System.Drawing.Point(15, 107);
             this.lblPrecentage.Name = "lblPrecentage";
-            this.lblPrecentage.Size = new System.Drawing.Size(231, 23);
+            this.lblPrecentage.Size = new System.Drawing.Size(370, 23);
             this.lblPrecentage.Style = ReaLTaiizor.Enum.Metro.Style.Dark;
             this.lblPrecentage.StyleManager = this.metroStyleManager1;
             this.lblPrecentage.TabIndex = 0;
@@ -121,45 +122,13 @@ namespace MyBatteryLogger
             this.lblDatetime.IsDerivedStyle = true;
             this.lblDatetime.Location = new System.Drawing.Point(15, 130);
             this.lblDatetime.Name = "lblDatetime";
-            this.lblDatetime.Size = new System.Drawing.Size(231, 23);
+            this.lblDatetime.Size = new System.Drawing.Size(370, 23);
             this.lblDatetime.Style = ReaLTaiizor.Enum.Metro.Style.Dark;
             this.lblDatetime.StyleManager = this.metroStyleManager1;
             this.lblDatetime.TabIndex = 3;
             this.lblDatetime.Text = "metroLabel2";
             this.lblDatetime.ThemeAuthor = "Taiizor";
             this.lblDatetime.ThemeName = "MetroDark";
-            // 
-            // lvMain
-            // 
-            this.lvMain.AutoSizeTable = false;
-            this.lvMain.BackColor = System.Drawing.Color.FromArgb(( (int)( ( (byte)( 255 ) ) ) ), ( (int)( ( (byte)( 255 ) ) ) ), ( (int)( ( (byte)( 255 ) ) ) ));
-            this.lvMain.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.lvMain.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] { this.columnHeader1, this.columnHeader2 });
-            this.lvMain.Depth = 0;
-            this.lvMain.FullRowSelect = true;
-            this.lvMain.HideSelection = false;
-            this.lvMain.Location = new System.Drawing.Point(15, 166);
-            this.lvMain.MinimumSize = new System.Drawing.Size(200, 100);
-            this.lvMain.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.lvMain.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
-            this.lvMain.Name = "lvMain";
-            this.lvMain.OwnerDraw = true;
-            this.lvMain.Size = new System.Drawing.Size(370, 253);
-            this.lvMain.TabIndex = 4;
-            this.lvMain.UseCompatibleStateImageBehavior = false;
-            this.lvMain.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Name";
-            this.columnHeader1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader1.Width = 185;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Value";
-            this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader2.Width = 185;
             // 
             // btnHide
             // 
@@ -171,7 +140,7 @@ namespace MyBatteryLogger
             this.btnHide.HoverColor = System.Drawing.Color.FromArgb(( (int)( ( (byte)( 95 ) ) ) ), ( (int)( ( (byte)( 207 ) ) ) ), ( (int)( ( (byte)( 255 ) ) ) ));
             this.btnHide.HoverTextColor = System.Drawing.Color.White;
             this.btnHide.IsDerivedStyle = true;
-            this.btnHide.Location = new System.Drawing.Point(146, 425);
+            this.btnHide.Location = new System.Drawing.Point(150, 425);
             this.btnHide.Name = "btnHide";
             this.btnHide.NormalBorderColor = System.Drawing.Color.FromArgb(( (int)( ( (byte)( 65 ) ) ) ), ( (int)( ( (byte)( 177 ) ) ) ), ( (int)( ( (byte)( 225 ) ) ) ));
             this.btnHide.NormalColor = System.Drawing.Color.FromArgb(( (int)( ( (byte)( 65 ) ) ) ), ( (int)( ( (byte)( 177 ) ) ) ), ( (int)( ( (byte)( 225 ) ) ) ));
@@ -188,14 +157,50 @@ namespace MyBatteryLogger
             this.btnHide.ThemeName = "MetroDark";
             this.btnHide.Click += new System.EventHandler(this.btnHide_Click);
             // 
+            // listView1
+            // 
+            this.listView1.AutoSizeTable = false;
+            this.listView1.BackColor = System.Drawing.Color.FromArgb(( (int)( ( (byte)( 255 ) ) ) ), ( (int)( ( (byte)( 255 ) ) ) ), ( (int)( ( (byte)( 255 ) ) ) ));
+            this.listView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] { this.columnHeader1, this.columnHeader2, this.columnHeader3 });
+            this.listView1.Depth = 0;
+            this.listView1.FullRowSelect = true;
+            this.listView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.listView1.HideSelection = false;
+            this.listView1.Location = new System.Drawing.Point(15, 156);
+            this.listView1.MinimumSize = new System.Drawing.Size(200, 100);
+            this.listView1.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.listView1.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
+            this.listView1.Name = "listView1";
+            this.listView1.OwnerDraw = true;
+            this.listView1.Size = new System.Drawing.Size(370, 263);
+            this.listView1.TabIndex = 6;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Time";
+            this.columnHeader1.Width = 140;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Batt";
+            this.columnHeader2.Width = 70;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "PowerLine";
+            this.columnHeader3.Width = 160;
+            // 
             // MyBatteryLoggerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundColor = System.Drawing.Color.FromArgb(( (int)( ( (byte)( 30 ) ) ) ), ( (int)( ( (byte)( 30 ) ) ) ), ( (int)( ( (byte)( 30 ) ) ) ));
             this.ClientSize = new System.Drawing.Size(400, 480);
+            this.Controls.Add(this.listView1);
             this.Controls.Add(this.btnHide);
-            this.Controls.Add(this.lvMain);
             this.Controls.Add(this.lblDatetime);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnRefresh);
@@ -210,12 +215,14 @@ namespace MyBatteryLogger
             this.ResumeLayout(false);
         }
 
-        private ReaLTaiizor.Controls.MetroButton btnHide;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
 
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
 
-        private ReaLTaiizor.Controls.MaterialListView lvMain;
+        private ReaLTaiizor.Controls.MaterialListView listView1;
+
+        private ReaLTaiizor.Controls.MetroButton btnHide;
 
         private ReaLTaiizor.Controls.MetroLabel lblPrecentage;
         private ReaLTaiizor.Controls.MetroButton btnRefresh;
