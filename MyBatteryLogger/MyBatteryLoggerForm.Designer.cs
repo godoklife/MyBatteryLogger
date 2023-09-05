@@ -38,15 +38,16 @@ namespace MyBatteryLogger
             this.lvMain = new ReaLTaiizor.Controls.MaterialListView();
             this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
+            this.btnHide = new ReaLTaiizor.Controls.MetroButton();
             this.SuspendLayout();
             // 
             // metroStyleManager1
             // 
             this.metroStyleManager1.CustomTheme = null;
             this.metroStyleManager1.OwnerForm = this;
-            this.metroStyleManager1.Style = ReaLTaiizor.Enum.Metro.Style.Light;
+            this.metroStyleManager1.Style = ReaLTaiizor.Enum.Metro.Style.Dark;
             this.metroStyleManager1.ThemeAuthor = "Taiizor";
-            this.metroStyleManager1.ThemeName = "MetroLight";
+            this.metroStyleManager1.ThemeName = "MetroDark";
             // 
             // lblPrecentage
             // 
@@ -55,12 +56,12 @@ namespace MyBatteryLogger
             this.lblPrecentage.Location = new System.Drawing.Point(15, 107);
             this.lblPrecentage.Name = "lblPrecentage";
             this.lblPrecentage.Size = new System.Drawing.Size(231, 23);
-            this.lblPrecentage.Style = ReaLTaiizor.Enum.Metro.Style.Light;
+            this.lblPrecentage.Style = ReaLTaiizor.Enum.Metro.Style.Dark;
             this.lblPrecentage.StyleManager = this.metroStyleManager1;
             this.lblPrecentage.TabIndex = 0;
             this.lblPrecentage.Text = "metroLabel1";
             this.lblPrecentage.ThemeAuthor = "Taiizor";
-            this.lblPrecentage.ThemeName = "MetroLight";
+            this.lblPrecentage.ThemeName = "MetroDark";
             // 
             // btnRefresh
             // 
@@ -81,12 +82,12 @@ namespace MyBatteryLogger
             this.btnRefresh.PressColor = System.Drawing.Color.FromArgb(( (int)( ( (byte)( 35 ) ) ) ), ( (int)( ( (byte)( 147 ) ) ) ), ( (int)( ( (byte)( 195 ) ) ) ));
             this.btnRefresh.PressTextColor = System.Drawing.Color.White;
             this.btnRefresh.Size = new System.Drawing.Size(100, 40);
-            this.btnRefresh.Style = ReaLTaiizor.Enum.Metro.Style.Light;
+            this.btnRefresh.Style = ReaLTaiizor.Enum.Metro.Style.Dark;
             this.btnRefresh.StyleManager = this.metroStyleManager1;
             this.btnRefresh.TabIndex = 1;
             this.btnRefresh.Text = "새로고침";
             this.btnRefresh.ThemeAuthor = "Taiizor";
-            this.btnRefresh.ThemeName = "MetroLight";
+            this.btnRefresh.ThemeName = "MetroDark";
             // 
             // btnClose
             // 
@@ -107,12 +108,12 @@ namespace MyBatteryLogger
             this.btnClose.PressColor = System.Drawing.Color.FromArgb(( (int)( ( (byte)( 35 ) ) ) ), ( (int)( ( (byte)( 147 ) ) ) ), ( (int)( ( (byte)( 195 ) ) ) ));
             this.btnClose.PressTextColor = System.Drawing.Color.White;
             this.btnClose.Size = new System.Drawing.Size(100, 40);
-            this.btnClose.Style = ReaLTaiizor.Enum.Metro.Style.Light;
+            this.btnClose.Style = ReaLTaiizor.Enum.Metro.Style.Dark;
             this.btnClose.StyleManager = this.metroStyleManager1;
             this.btnClose.TabIndex = 2;
             this.btnClose.Text = "닫기";
             this.btnClose.ThemeAuthor = "Taiizor";
-            this.btnClose.ThemeName = "MetroLight";
+            this.btnClose.ThemeName = "MetroDark";
             // 
             // lblDatetime
             // 
@@ -121,12 +122,12 @@ namespace MyBatteryLogger
             this.lblDatetime.Location = new System.Drawing.Point(15, 130);
             this.lblDatetime.Name = "lblDatetime";
             this.lblDatetime.Size = new System.Drawing.Size(231, 23);
-            this.lblDatetime.Style = ReaLTaiizor.Enum.Metro.Style.Light;
+            this.lblDatetime.Style = ReaLTaiizor.Enum.Metro.Style.Dark;
             this.lblDatetime.StyleManager = this.metroStyleManager1;
             this.lblDatetime.TabIndex = 3;
             this.lblDatetime.Text = "metroLabel2";
             this.lblDatetime.ThemeAuthor = "Taiizor";
-            this.lblDatetime.ThemeName = "MetroLight";
+            this.lblDatetime.ThemeName = "MetroDark";
             // 
             // lvMain
             // 
@@ -160,11 +161,40 @@ namespace MyBatteryLogger
             this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.columnHeader2.Width = 185;
             // 
+            // btnHide
+            // 
+            this.btnHide.DisabledBackColor = System.Drawing.Color.FromArgb(( (int)( ( (byte)( 120 ) ) ) ), ( (int)( ( (byte)( 65 ) ) ) ), ( (int)( ( (byte)( 177 ) ) ) ), ( (int)( ( (byte)( 225 ) ) ) ));
+            this.btnHide.DisabledBorderColor = System.Drawing.Color.FromArgb(( (int)( ( (byte)( 120 ) ) ) ), ( (int)( ( (byte)( 65 ) ) ) ), ( (int)( ( (byte)( 177 ) ) ) ), ( (int)( ( (byte)( 225 ) ) ) ));
+            this.btnHide.DisabledForeColor = System.Drawing.Color.Gray;
+            this.btnHide.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnHide.HoverBorderColor = System.Drawing.Color.FromArgb(( (int)( ( (byte)( 95 ) ) ) ), ( (int)( ( (byte)( 207 ) ) ) ), ( (int)( ( (byte)( 255 ) ) ) ));
+            this.btnHide.HoverColor = System.Drawing.Color.FromArgb(( (int)( ( (byte)( 95 ) ) ) ), ( (int)( ( (byte)( 207 ) ) ) ), ( (int)( ( (byte)( 255 ) ) ) ));
+            this.btnHide.HoverTextColor = System.Drawing.Color.White;
+            this.btnHide.IsDerivedStyle = true;
+            this.btnHide.Location = new System.Drawing.Point(146, 425);
+            this.btnHide.Name = "btnHide";
+            this.btnHide.NormalBorderColor = System.Drawing.Color.FromArgb(( (int)( ( (byte)( 65 ) ) ) ), ( (int)( ( (byte)( 177 ) ) ) ), ( (int)( ( (byte)( 225 ) ) ) ));
+            this.btnHide.NormalColor = System.Drawing.Color.FromArgb(( (int)( ( (byte)( 65 ) ) ) ), ( (int)( ( (byte)( 177 ) ) ) ), ( (int)( ( (byte)( 225 ) ) ) ));
+            this.btnHide.NormalTextColor = System.Drawing.Color.White;
+            this.btnHide.PressBorderColor = System.Drawing.Color.FromArgb(( (int)( ( (byte)( 35 ) ) ) ), ( (int)( ( (byte)( 147 ) ) ) ), ( (int)( ( (byte)( 195 ) ) ) ));
+            this.btnHide.PressColor = System.Drawing.Color.FromArgb(( (int)( ( (byte)( 35 ) ) ) ), ( (int)( ( (byte)( 147 ) ) ) ), ( (int)( ( (byte)( 195 ) ) ) ));
+            this.btnHide.PressTextColor = System.Drawing.Color.White;
+            this.btnHide.Size = new System.Drawing.Size(100, 40);
+            this.btnHide.Style = ReaLTaiizor.Enum.Metro.Style.Dark;
+            this.btnHide.StyleManager = this.metroStyleManager1;
+            this.btnHide.TabIndex = 5;
+            this.btnHide.Text = "최소화";
+            this.btnHide.ThemeAuthor = "Taiizor";
+            this.btnHide.ThemeName = "MetroDark";
+            this.btnHide.Click += new System.EventHandler(this.btnHide_Click);
+            // 
             // MyBatteryLoggerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundColor = System.Drawing.Color.FromArgb(( (int)( ( (byte)( 30 ) ) ) ), ( (int)( ( (byte)( 30 ) ) ) ), ( (int)( ( (byte)( 30 ) ) ) ));
             this.ClientSize = new System.Drawing.Size(400, 480);
+            this.Controls.Add(this.btnHide);
             this.Controls.Add(this.lvMain);
             this.Controls.Add(this.lblDatetime);
             this.Controls.Add(this.btnClose);
@@ -172,10 +202,15 @@ namespace MyBatteryLogger
             this.Controls.Add(this.lblPrecentage);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MyBatteryLoggerForm";
+            this.Style = ReaLTaiizor.Enum.Metro.Style.Dark;
             this.StyleManager = this.metroStyleManager1;
             this.Text = "MyBatteryLogger";
+            this.TextColor = System.Drawing.Color.White;
+            this.ThemeName = "MetroDark";
             this.ResumeLayout(false);
         }
+
+        private ReaLTaiizor.Controls.MetroButton btnHide;
 
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;

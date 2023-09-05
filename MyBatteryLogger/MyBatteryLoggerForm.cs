@@ -1,21 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Management;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 using ReaLTaiizor.Controls;
 using ReaLTaiizor.Forms;
-using Timer = System.Timers.Timer;
 
 namespace MyBatteryLogger
 {
-
     public enum RetrieveBatteryStatType
     {
         ALL = 0,
@@ -25,94 +19,102 @@ namespace MyBatteryLogger
         BATTERY_LIFE_REMAINING = 4,
         POWER_LINE_STATUS = 5
     }
+
     public partial class MyBatteryLoggerForm : MetroForm
     {
         #region field
         private int pastBatteryLifePercent = -1;
-        private System.Windows.Forms.Timer logTimer;
-        private string logPath = string.Empty;
+        private PowerLineStatus pastPowerLineStatus = PowerLineStatus.Unknown;
+        private readonly Timer logTimer;
+        private readonly DateTime pastDateTime;
+
+        // 저장 경로
+        private static string fileName = string.Empty;
+        private static string logPath = string.Empty;
+        private static string fullPath = string.Empty;
+
+        private NotifyIcon trayIcon;
+        private ContextMenu trayMenu;
         #endregion
-        
+
         public MyBatteryLoggerForm()
         {
             InitializeComponent();
-            // SizeChanged += ResizeControls;
+            // Sianged += Resizntrols;
+
+            #region 트레이
+            trayMenu = new ContextMenu();
+            trayMenu.MenuItems.Add("열기", (sender, e) =>
+                                         {
+                                             trayIcon.Visible = false;
+                                             Show();
+                                         });
+            trayMenu.MenuItems.Add("종료", btnClose_Click);
+            trayIcon = new NotifyIcon();
+            trayIcon.Text= "MyBatteryLogger";
+            trayIcon.Icon = new Icon(SystemIcons.Application, 40, 40);
+            trayIcon.ContextMenu = trayMenu;
+            trayIcon.Visible = false;
+            trayIcon.Click += (sender, e) =>
+                              {
+                                  trayIcon.Visible = false;
+                                  Show();
+                              };
+            #endregion
+            
+            #region 로그 저장경로
+            pastDateTime = DateTime.Today;
+            fileName = $@"MyBatteryLogger_{DateTime.Now:yyyy-MM-dd}.log";
+            logPath = $@"{Application.StartupPath}\log";
+            fullPath = logPath + "\\" + fileName;
+
+            if (!Directory.Exists(logPath))
+            {
+                Directory.CreateDirectory(logPath);
+            }
+            #endregion
+
             #region event
             btnRefresh.Click += btnRefresh_Click;
             btnClose.Click += btnClose_Click;
             #endregion
 
             #region logTimer
-            logTimer = new System.Windows.Forms.Timer();
-            logTimer.Interval = 3000;
+            logTimer = new Timer();
+            logTimer.Interval = 1000;
             logTimer.Tick += logTimer_Tick;
+            logTimer.Start();
             #endregion
-
         }
+
+        private void ResizeControls(object sender, EventArgs e) { }
 
         /// <summary>
-        /// 배터리 상태 조회
+        /// Tick
         /// </summary>
-        /// <returns></returns>
-        private string RetrieveBatteryState(RetrieveBatteryStatType type)
-        {
-            PowerStatus ps = SystemInformation.PowerStatus;
-            string result = string.Empty;
-            
-            switch (type)
-            {
-                case RetrieveBatteryStatType.ALL:
-                    break;
-                case RetrieveBatteryStatType.BATTERY_LIFE_PERCENT:
-                    result = ( ps.BatteryLifePercent * 100 ).ToString("d%");
-                    break;
-                case RetrieveBatteryStatType.BATTERY_CHARGE_STATUS:
-                    result = ps.BatteryChargeStatus == BatteryChargeStatus.Charging ? "충전중" : "방전중";
-                    break;
-                case RetrieveBatteryStatType.BATTERY_FULL_LIFE_TIME:
-                    break;
-                case RetrieveBatteryStatType.BATTERY_LIFE_REMAINING:
-                    break;
-                case RetrieveBatteryStatType.POWER_LINE_STATUS:
-                    break;
-            }
-
-            return result;
-        }
-        
-        private string GetBatteryVoltage()
-        {
-            string result = string.Empty;
-
-            return result;
-        }
-        
-        private void ResizeControls(object sender, EventArgs e)
-        {
-            
-        }
-
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void logTimer_Tick(object sender, EventArgs e)
         {
             logTimer.Stop();
 
-            PowerStatus ps = SystemInformation.PowerStatus;
-            if ((int)( ps.BatteryLifePercent * 100 ) != pastBatteryLifePercent)
-            {
-                string powerLineMsg = ps.PowerLineStatus == PowerLineStatus.Online
-                                          ? "연결됨"
-                                          : ps.PowerLineStatus == PowerLineStatus.Offline
-                                              ? "연결되지 않음"
-                                              : "알 수 없음";
-                pastBatteryLifePercent = (int)( ps.BatteryLifePercent * 100 );
+            if (pastDateTime != DateTime.Today)
+                fileName = $@"MyBatteryLogger_{DateTime.Now:yyyy-MM-dd}.log";
 
-                WriteBatteryLog(pastBatteryLifePercent.ToString(), powerLineMsg);
-                lblPrecentage.Text = $"남은 배터리 : {pastBatteryLifePercent}%, 전원선: {powerLineMsg}";
+            PowerStatus ps = SystemInformation.PowerStatus;
+            int currentBatteryLifePercent = (int)Math.Round(ps.BatteryLifePercent * 100);
+            if (currentBatteryLifePercent != pastBatteryLifePercent || pastPowerLineStatus != ps.PowerLineStatus)
+            {
+                pastBatteryLifePercent = currentBatteryLifePercent;
+                pastPowerLineStatus = ps.PowerLineStatus;
+
+                WriteBatteryLog(pastBatteryLifePercent, pastPowerLineStatus.ToString());
+                lblPrecentage.Text = $"남은 배터리 : {pastBatteryLifePercent}%, 전원선: {pastPowerLineStatus.ToString()}";
             }
-            
+
             logTimer.Start();
         }
-        
+
         /// <summary>
         /// 새로고침 버튼 클릭 이벤트
         /// </summary>
@@ -120,32 +122,65 @@ namespace MyBatteryLogger
         /// <param name="e"></param>
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            logTimer.Start();
-            PowerStatus powerStatus = SystemInformation.PowerStatus;
-            lblPrecentage.Text = $"남은 배터리: {powerStatus.BatteryLifePercent * 100}%, 상태: {powerStatus.BatteryChargeStatus}";
+            // logTimer.Start();
 
-            string query = "SELECT * FROM Win32_Battery";
-            ManagementObjectSearcher mos = new ManagementObjectSearcher(query);
+            Debug.WriteLine("Stopwatch.IsHighResolution: " + Stopwatch.IsHighResolution);
+            Debug.WriteLine("Stopwatch.Frequency: " + Stopwatch.Frequency);
+            Stopwatch sw = new Stopwatch();
 
-            int count = 0;
-            lvMain.Items.Clear();
-            foreach (ManagementBaseObject mo in mos.Get())
+            PowerStatus ps;
+            BatteryChargeStatus psBatteryChargeStatus;
+            PowerLineStatus powerStatus = PowerLineStatus.Unknown;
+            float batteryLifePercent = 0f;
+            int batteryFullLifetime = 0;
+            int batteryLifeRemaining = 0;
+
+            ps = SystemInformation.PowerStatus;
+            psBatteryChargeStatus = ps.BatteryChargeStatus;
+            batteryLifePercent = ps.BatteryLifePercent;
+            powerStatus = ps.PowerLineStatus;
+            batteryFullLifetime = ps.BatteryFullLifetime;
+            batteryLifeRemaining = ps.BatteryLifeRemaining;
+            int convertedFloat = 0;
+
+            sw.Start();
+            for (int i = 0; i < 1; i++)
             {
-                foreach (PropertyData propertyData in mo.Properties)
-                {
-                    Console.WriteLine($"{count} - {propertyData.Name}: {propertyData.Value}");
-                    ListViewItem lvi = new ListViewItem(new string[] { propertyData.Name, propertyData.Value == null?string.Empty : propertyData.Value.ToString()});
-                    lvMain.Items.Add(lvi);
-                    if (propertyData.Name == "BatteryStatus")
-                    {
-                        lblDatetime.Text = $"남은 배터리: {powerStatus.BatteryLifePercent * 100}%, 상태: {propertyData.Value}";
-                    }
-                }
-                
-                count++;
+                convertedFloat = (int)Math.Round(batteryLifePercent * 100);
             }
+
+            WriteBatteryLog(convertedFloat, powerStatus.ToString());
+            sw.Stop();
+            Debug.WriteLine("sw.ElapsedMilliseconds: " + sw.ElapsedMilliseconds);
+            Debug.WriteLine("sw.Elapsed " + sw.Elapsed);
+
+            #region 기존 새로고침 버튼
+            // PowerStatus powerStatus = SystemInformation.PowerStatus;
+            // lblPrecentage.Text = $"남은 배터리: {powerStatus.BatteryLifePercent * 100}%, 상태: {powerStatus.BatteryChargeStatus}";
+            //
+            // string query = "SELECT * FROM Win32_Battery";
+            // ManagementObjectSearcher mos = new ManagementObjectSearcher(query);
+            //
+            // int count = 0;
+            // lvMain.Items.Clear();
+            // foreach (ManagementBaseObject mo in mos.Get())
+            // {
+            //     foreach (PropertyData propertyData in mo.Properties)
+            //     {
+            //         Console.WriteLine($"{count} - {propertyData.Name}: {propertyData.Value}");
+            //         ListViewItem lvi = new ListViewItem(new string[] { propertyData.Name, propertyData.Value == null?string.Empty : propertyData.Value.ToString()});
+            //         lvMain.Items.Add(lvi);
+            //         if (propertyData.Name == "BatteryStatus")
+            //         {
+            //             lblDatetime.Text = $"남은 배터리: {powerStatus.BatteryLifePercent * 100}%, 상태: {propertyData.Value}";
+            //         }
+            //     }
+            //     
+            //     count++;
+            // }
+            #endregion
         }
-        
+
         /// <summary>
         /// 닫기 버튼 클릭 이벤트
         /// </summary>
@@ -155,10 +190,11 @@ namespace MyBatteryLogger
         {
             logTimer.Stop();
             DialogResult dr = MetroMessageBox.Show(this, "종료할까요?", "종료", MessageBoxButtons.YesNo);
-            
-            if(dr == DialogResult.Yes)
+
+            if (dr == DialogResult.Yes)
             {
-                Dispose();
+                logTimer.Dispose();
+                Application.Exit();
             }
             else
             {
@@ -166,15 +202,30 @@ namespace MyBatteryLogger
             }
         }
 
-        private void WriteBatteryLog(string pastBatteryLifePercent, string powerLineMsg)
+        /// <summary>
+        /// 최소화 버튼 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnHide_Click(object sender, EventArgs e)
         {
-            string fileName = "MyBatteryLogger_"+DateTime.Now.ToString("yyyy-MM-dd");
-            
-            FileStream fs
-            if (File.Exists(Application.StartupPath + $@"\{fileName}.log"))
+            Hide();
+            trayIcon.Visible = true;
+        }
+
+        private void WriteBatteryLog(int batteryPercentage, string powerLineMsg)
+        {
+            try
             {
-                fs  = new FileStream()
+                StreamWriter sw = new StreamWriter(fullPath, true, Encoding.UTF8);
+                sw.WriteLine($"[{DateTime.Now,-24:yyyy-MM-dd hh:mm:ss}] - [배터리: {batteryPercentage,3}%] - [전원선: {powerLineMsg,-8}]");
+                sw.Close();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
             }
         }
+        
     }
 }
