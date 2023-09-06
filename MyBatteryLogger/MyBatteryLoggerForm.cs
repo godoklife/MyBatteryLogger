@@ -30,6 +30,7 @@ namespace MyBatteryLogger
         public MyBatteryLoggerForm()
         {
             InitializeComponent();
+            AllowResize = false;
 
             #region 트레이
             trayMenu = new ContextMenu();
