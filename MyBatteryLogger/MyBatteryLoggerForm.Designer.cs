@@ -34,27 +34,22 @@ namespace MyBatteryLogger
             this.lblPrecentage = new ReaLTaiizor.Controls.MetroLabel();
             this.btnRefresh = new ReaLTaiizor.Controls.MetroButton();
             this.btnClose = new ReaLTaiizor.Controls.MetroButton();
-            this.lblDatetime = new ReaLTaiizor.Controls.MetroLabel();
             this.btnHide = new ReaLTaiizor.Controls.MetroButton();
             this.listView1 = new ReaLTaiizor.Controls.MaterialListView();
             this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
+            this.ckbAutoRun = new ReaLTaiizor.Controls.MetroCheckBox();
+            this.ckbMinimalize = new ReaLTaiizor.Controls.MetroCheckBox();
             this.SuspendLayout();
-            // 
-            // metroStyleManager1
-            // 
             this.metroStyleManager1.CustomTheme = null;
             this.metroStyleManager1.OwnerForm = this;
             this.metroStyleManager1.Style = ReaLTaiizor.Enum.Metro.Style.Dark;
             this.metroStyleManager1.ThemeAuthor = "Taiizor";
             this.metroStyleManager1.ThemeName = "MetroDark";
-            // 
-            // lblPrecentage
-            // 
             this.lblPrecentage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.lblPrecentage.IsDerivedStyle = true;
-            this.lblPrecentage.Location = new System.Drawing.Point(15, 107);
+            this.lblPrecentage.Location = new System.Drawing.Point(15, 70);
             this.lblPrecentage.Name = "lblPrecentage";
             this.lblPrecentage.Size = new System.Drawing.Size(370, 23);
             this.lblPrecentage.Style = ReaLTaiizor.Enum.Metro.Style.Dark;
@@ -63,9 +58,6 @@ namespace MyBatteryLogger
             this.lblPrecentage.Text = "metroLabel1";
             this.lblPrecentage.ThemeAuthor = "Taiizor";
             this.lblPrecentage.ThemeName = "MetroDark";
-            // 
-            // btnRefresh
-            // 
             this.btnRefresh.DisabledBackColor = System.Drawing.Color.FromArgb(( (int)( ( (byte)( 120 ) ) ) ), ( (int)( ( (byte)( 65 ) ) ) ), ( (int)( ( (byte)( 177 ) ) ) ), ( (int)( ( (byte)( 225 ) ) ) ));
             this.btnRefresh.DisabledBorderColor = System.Drawing.Color.FromArgb(( (int)( ( (byte)( 120 ) ) ) ), ( (int)( ( (byte)( 65 ) ) ) ), ( (int)( ( (byte)( 177 ) ) ) ), ( (int)( ( (byte)( 225 ) ) ) ));
             this.btnRefresh.DisabledForeColor = System.Drawing.Color.Gray;
@@ -89,9 +81,6 @@ namespace MyBatteryLogger
             this.btnRefresh.Text = "새로고침";
             this.btnRefresh.ThemeAuthor = "Taiizor";
             this.btnRefresh.ThemeName = "MetroDark";
-            // 
-            // btnClose
-            // 
             this.btnClose.DisabledBackColor = System.Drawing.Color.FromArgb(( (int)( ( (byte)( 120 ) ) ) ), ( (int)( ( (byte)( 65 ) ) ) ), ( (int)( ( (byte)( 177 ) ) ) ), ( (int)( ( (byte)( 225 ) ) ) ));
             this.btnClose.DisabledBorderColor = System.Drawing.Color.FromArgb(( (int)( ( (byte)( 120 ) ) ) ), ( (int)( ( (byte)( 65 ) ) ) ), ( (int)( ( (byte)( 177 ) ) ) ), ( (int)( ( (byte)( 225 ) ) ) ));
             this.btnClose.DisabledForeColor = System.Drawing.Color.Gray;
@@ -115,23 +104,6 @@ namespace MyBatteryLogger
             this.btnClose.Text = "닫기";
             this.btnClose.ThemeAuthor = "Taiizor";
             this.btnClose.ThemeName = "MetroDark";
-            // 
-            // lblDatetime
-            // 
-            this.lblDatetime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lblDatetime.IsDerivedStyle = true;
-            this.lblDatetime.Location = new System.Drawing.Point(15, 130);
-            this.lblDatetime.Name = "lblDatetime";
-            this.lblDatetime.Size = new System.Drawing.Size(370, 23);
-            this.lblDatetime.Style = ReaLTaiizor.Enum.Metro.Style.Dark;
-            this.lblDatetime.StyleManager = this.metroStyleManager1;
-            this.lblDatetime.TabIndex = 3;
-            this.lblDatetime.Text = "metroLabel2";
-            this.lblDatetime.ThemeAuthor = "Taiizor";
-            this.lblDatetime.ThemeName = "MetroDark";
-            // 
-            // btnHide
-            // 
             this.btnHide.DisabledBackColor = System.Drawing.Color.FromArgb(( (int)( ( (byte)( 120 ) ) ) ), ( (int)( ( (byte)( 65 ) ) ) ), ( (int)( ( (byte)( 177 ) ) ) ), ( (int)( ( (byte)( 225 ) ) ) ));
             this.btnHide.DisabledBorderColor = System.Drawing.Color.FromArgb(( (int)( ( (byte)( 120 ) ) ) ), ( (int)( ( (byte)( 65 ) ) ) ), ( (int)( ( (byte)( 177 ) ) ) ), ( (int)( ( (byte)( 225 ) ) ) ));
             this.btnHide.DisabledForeColor = System.Drawing.Color.Gray;
@@ -156,9 +128,6 @@ namespace MyBatteryLogger
             this.btnHide.ThemeAuthor = "Taiizor";
             this.btnHide.ThemeName = "MetroDark";
             this.btnHide.Click += new System.EventHandler(this.btnHide_Click);
-            // 
-            // listView1
-            // 
             this.listView1.AutoSizeTable = false;
             this.listView1.BackColor = System.Drawing.Color.FromArgb(( (int)( ( (byte)( 255 ) ) ) ), ( (int)( ( (byte)( 255 ) ) ) ), ( (int)( ( (byte)( 255 ) ) ) ));
             this.listView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -167,41 +136,71 @@ namespace MyBatteryLogger
             this.listView1.FullRowSelect = true;
             this.listView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(15, 156);
+            this.listView1.Location = new System.Drawing.Point(15, 96);
             this.listView1.MinimumSize = new System.Drawing.Size(200, 100);
             this.listView1.MouseLocation = new System.Drawing.Point(-1, -1);
             this.listView1.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
+            this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
             this.listView1.OwnerDraw = true;
             this.listView1.Size = new System.Drawing.Size(370, 263);
             this.listView1.TabIndex = 6;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader1
-            // 
             this.columnHeader1.Text = "Time";
             this.columnHeader1.Width = 140;
-            // 
-            // columnHeader2
-            // 
             this.columnHeader2.Text = "Batt";
             this.columnHeader2.Width = 70;
-            // 
-            // columnHeader3
-            // 
             this.columnHeader3.Text = "PowerLine";
             this.columnHeader3.Width = 160;
-            // 
-            // MyBatteryLoggerForm
-            // 
+            this.ckbAutoRun.BackColor = System.Drawing.Color.Transparent;
+            this.ckbAutoRun.BackgroundColor = System.Drawing.Color.FromArgb(( (int)( ( (byte)( 30 ) ) ) ), ( (int)( ( (byte)( 30 ) ) ) ), ( (int)( ( (byte)( 30 ) ) ) ));
+            this.ckbAutoRun.BorderColor = System.Drawing.Color.FromArgb(( (int)( ( (byte)( 155 ) ) ) ), ( (int)( ( (byte)( 155 ) ) ) ), ( (int)( ( (byte)( 155 ) ) ) ));
+            this.ckbAutoRun.Checked = false;
+            this.ckbAutoRun.CheckSignColor = System.Drawing.Color.FromArgb(( (int)( ( (byte)( 65 ) ) ) ), ( (int)( ( (byte)( 177 ) ) ) ), ( (int)( ( (byte)( 225 ) ) ) ));
+            this.ckbAutoRun.CheckState = ReaLTaiizor.Enum.Metro.CheckState.Unchecked;
+            this.ckbAutoRun.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ckbAutoRun.DisabledBorderColor = System.Drawing.Color.FromArgb(( (int)( ( (byte)( 85 ) ) ) ), ( (int)( ( (byte)( 85 ) ) ) ), ( (int)( ( (byte)( 85 ) ) ) ));
+            this.ckbAutoRun.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.ckbAutoRun.IsDerivedStyle = true;
+            this.ckbAutoRun.Location = new System.Drawing.Point(15, 365);
+            this.ckbAutoRun.Name = "ckbAutoRun";
+            this.ckbAutoRun.SignStyle = ReaLTaiizor.Enum.Metro.SignStyle.Sign;
+            this.ckbAutoRun.Size = new System.Drawing.Size(125, 16);
+            this.ckbAutoRun.Style = ReaLTaiizor.Enum.Metro.Style.Dark;
+            this.ckbAutoRun.StyleManager = this.metroStyleManager1;
+            this.ckbAutoRun.TabIndex = 7;
+            this.ckbAutoRun.Text = "부팅시 자동실행";
+            this.ckbAutoRun.ThemeAuthor = "Taiizor";
+            this.ckbAutoRun.ThemeName = "MetroDark";
+            this.ckbMinimalize.BackColor = System.Drawing.Color.Transparent;
+            this.ckbMinimalize.BackgroundColor = System.Drawing.Color.FromArgb(( (int)( ( (byte)( 30 ) ) ) ), ( (int)( ( (byte)( 30 ) ) ) ), ( (int)( ( (byte)( 30 ) ) ) ));
+            this.ckbMinimalize.BorderColor = System.Drawing.Color.FromArgb(( (int)( ( (byte)( 155 ) ) ) ), ( (int)( ( (byte)( 155 ) ) ) ), ( (int)( ( (byte)( 155 ) ) ) ));
+            this.ckbMinimalize.Checked = false;
+            this.ckbMinimalize.CheckSignColor = System.Drawing.Color.FromArgb(( (int)( ( (byte)( 65 ) ) ) ), ( (int)( ( (byte)( 177 ) ) ) ), ( (int)( ( (byte)( 225 ) ) ) ));
+            this.ckbMinimalize.CheckState = ReaLTaiizor.Enum.Metro.CheckState.Unchecked;
+            this.ckbMinimalize.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ckbMinimalize.DisabledBorderColor = System.Drawing.Color.FromArgb(( (int)( ( (byte)( 85 ) ) ) ), ( (int)( ( (byte)( 85 ) ) ) ), ( (int)( ( (byte)( 85 ) ) ) ));
+            this.ckbMinimalize.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.ckbMinimalize.IsDerivedStyle = true;
+            this.ckbMinimalize.Location = new System.Drawing.Point(150, 365);
+            this.ckbMinimalize.Name = "ckbMinimalize";
+            this.ckbMinimalize.SignStyle = ReaLTaiizor.Enum.Metro.SignStyle.Sign;
+            this.ckbMinimalize.Size = new System.Drawing.Size(125, 16);
+            this.ckbMinimalize.Style = ReaLTaiizor.Enum.Metro.Style.Dark;
+            this.ckbMinimalize.StyleManager = this.metroStyleManager1;
+            this.ckbMinimalize.TabIndex = 8;
+            this.ckbMinimalize.Text = "실행시 최소화";
+            this.ckbMinimalize.ThemeAuthor = "Taiizor";
+            this.ckbMinimalize.ThemeName = "MetroDark";
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundColor = System.Drawing.Color.FromArgb(( (int)( ( (byte)( 30 ) ) ) ), ( (int)( ( (byte)( 30 ) ) ) ), ( (int)( ( (byte)( 30 ) ) ) ));
             this.ClientSize = new System.Drawing.Size(400, 480);
+            this.Controls.Add(this.ckbMinimalize);
+            this.Controls.Add(this.ckbAutoRun);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.btnHide);
-            this.Controls.Add(this.lblDatetime);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.lblPrecentage);
@@ -215,6 +214,9 @@ namespace MyBatteryLogger
             this.ResumeLayout(false);
         }
 
+        private ReaLTaiizor.Controls.MetroCheckBox ckbAutoRun;
+        private ReaLTaiizor.Controls.MetroCheckBox ckbMinimalize;
+
         private System.Windows.Forms.ColumnHeader columnHeader3;
 
         private System.Windows.Forms.ColumnHeader columnHeader1;
@@ -227,7 +229,6 @@ namespace MyBatteryLogger
         private ReaLTaiizor.Controls.MetroLabel lblPrecentage;
         private ReaLTaiizor.Controls.MetroButton btnRefresh;
         private ReaLTaiizor.Controls.MetroButton btnClose;
-        private ReaLTaiizor.Controls.MetroLabel lblDatetime;
 
         private ReaLTaiizor.Manager.MetroStyleManager metroStyleManager1;
         #endregion

@@ -11,4 +11,6 @@ C:\Users\kimyongjun\RiderProjects\MyBatteryLogger\MyBatteryLogger\obj\Debug\MyBa
 C:\Users\kimyongjun\RiderProjects\MyBatteryLogger\MyBatteryLogger\bin\Debug\ReaLTaiizor.dll
 C:\Users\kimyongjun\RiderProjects\MyBatteryLogger\MyBatteryLogger\bin\Debug\ReaLTaiizor.xml
 C:\Users\kimyongjun\RiderProjects\MyBatteryLogger\MyBatteryLogger\obj\Debug\MyBatteryLogger.csproj.CopyComplete
-C:\Users\kimyongjun\RiderProjects\MyBatteryLogger\MyBatteryLogger\obj\Debug\MyBatteryLogger.MyBatteryLoggerForm.resources
+C:\Users\kimyongjun\RiderProjects\MyBatteryLogger\MyBatteryLogger\obj\Debug\MyBatteryLogger.ConfigHanler.resources
+C:\Users\kimyongjun\RiderProjects\MyBatteryLogger\MyBatteryLogger\obj\Debug\Interop.IWshRuntimeLibrary.dll
+C:\Users\kimyongjun\RiderProjects\MyBatteryLogger\MyBatteryLogger\obj\Debug\MyBatteryLogger.csproj.ResolveComReference.cache
