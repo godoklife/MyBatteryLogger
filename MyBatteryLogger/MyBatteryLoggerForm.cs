@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Runtime.InteropServices;
@@ -60,7 +61,7 @@ namespace MyBatteryLogger
         #region field
         private bool _working = false;
         
-        private readonly IConfigHandler _configHandler;
+        private readonly IConfigHandler _configHandler = new ConfigHanler();
         private string[] configKeyArr = new[] { "AutoRun", "Minimalize" };
         
         private byte pastBatteryLifePercent = 255;
@@ -82,8 +83,7 @@ namespace MyBatteryLogger
         {
             InitializeComponent();
             AllowResize = false;
-
-            _configHandler = new ConfigHanler();
+            
             #region 트레이
             trayMenu.MenuItems.Add("열기",
                                    (sender, e) =>
@@ -133,7 +133,7 @@ namespace MyBatteryLogger
             #endregion
 
             #region event
-            btnRefresh.Click += btnRefresh_Click;
+            btnOpenLog.Click += BtnOpenLog_Click;
             btnClose.Click += btnClose_Click;
             ckbAutoRun.CheckedChanged += ckbAutoRun_CheckedChanged;
             ckbMinimalize.CheckedChanged += ckbMinimalize_CheckedChanged;
@@ -186,13 +186,13 @@ namespace MyBatteryLogger
         }
 
         /// <summary>
-        /// 새로고침 버튼 클릭 이벤트
+        /// 로그 보기 클릭 이벤트
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnRefresh_Click(object sender, EventArgs e)
+        private void BtnOpenLog_Click(object sender, EventArgs e)
         {
-            MaterialMessageBox.Show("짜잔", false);
+            Process.Start(fullLogPath);
         }
 
         /// <summary>

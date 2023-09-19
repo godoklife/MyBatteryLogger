@@ -32,7 +32,7 @@ namespace MyBatteryLogger
         {
             this.metroStyleManager1 = new ReaLTaiizor.Manager.MetroStyleManager();
             this.lblPrecentage = new ReaLTaiizor.Controls.MetroLabel();
-            this.btnRefresh = new ReaLTaiizor.Controls.MetroButton();
+            this.btnOpenLog = new ReaLTaiizor.Controls.MetroButton();
             this.btnClose = new ReaLTaiizor.Controls.MetroButton();
             this.btnHide = new ReaLTaiizor.Controls.MetroButton();
             this.listView1 = new ReaLTaiizor.Controls.MaterialListView();
@@ -42,11 +42,17 @@ namespace MyBatteryLogger
             this.ckbAutoRun = new ReaLTaiizor.Controls.MetroCheckBox();
             this.ckbMinimalize = new ReaLTaiizor.Controls.MetroCheckBox();
             this.SuspendLayout();
+            // 
+            // metroStyleManager1
+            // 
             this.metroStyleManager1.CustomTheme = null;
             this.metroStyleManager1.OwnerForm = this;
             this.metroStyleManager1.Style = ReaLTaiizor.Enum.Metro.Style.Dark;
             this.metroStyleManager1.ThemeAuthor = "Taiizor";
             this.metroStyleManager1.ThemeName = "MetroDark";
+            // 
+            // lblPrecentage
+            // 
             this.lblPrecentage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.lblPrecentage.IsDerivedStyle = true;
             this.lblPrecentage.Location = new System.Drawing.Point(15, 70);
@@ -58,29 +64,35 @@ namespace MyBatteryLogger
             this.lblPrecentage.Text = "metroLabel1";
             this.lblPrecentage.ThemeAuthor = "Taiizor";
             this.lblPrecentage.ThemeName = "MetroDark";
-            this.btnRefresh.DisabledBackColor = System.Drawing.Color.FromArgb(( (int)( ( (byte)( 120 ) ) ) ), ( (int)( ( (byte)( 65 ) ) ) ), ( (int)( ( (byte)( 177 ) ) ) ), ( (int)( ( (byte)( 225 ) ) ) ));
-            this.btnRefresh.DisabledBorderColor = System.Drawing.Color.FromArgb(( (int)( ( (byte)( 120 ) ) ) ), ( (int)( ( (byte)( 65 ) ) ) ), ( (int)( ( (byte)( 177 ) ) ) ), ( (int)( ( (byte)( 225 ) ) ) ));
-            this.btnRefresh.DisabledForeColor = System.Drawing.Color.Gray;
-            this.btnRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnRefresh.HoverBorderColor = System.Drawing.Color.FromArgb(( (int)( ( (byte)( 95 ) ) ) ), ( (int)( ( (byte)( 207 ) ) ) ), ( (int)( ( (byte)( 255 ) ) ) ));
-            this.btnRefresh.HoverColor = System.Drawing.Color.FromArgb(( (int)( ( (byte)( 95 ) ) ) ), ( (int)( ( (byte)( 207 ) ) ) ), ( (int)( ( (byte)( 255 ) ) ) ));
-            this.btnRefresh.HoverTextColor = System.Drawing.Color.White;
-            this.btnRefresh.IsDerivedStyle = true;
-            this.btnRefresh.Location = new System.Drawing.Point(15, 425);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.NormalBorderColor = System.Drawing.Color.FromArgb(( (int)( ( (byte)( 65 ) ) ) ), ( (int)( ( (byte)( 177 ) ) ) ), ( (int)( ( (byte)( 225 ) ) ) ));
-            this.btnRefresh.NormalColor = System.Drawing.Color.FromArgb(( (int)( ( (byte)( 65 ) ) ) ), ( (int)( ( (byte)( 177 ) ) ) ), ( (int)( ( (byte)( 225 ) ) ) ));
-            this.btnRefresh.NormalTextColor = System.Drawing.Color.White;
-            this.btnRefresh.PressBorderColor = System.Drawing.Color.FromArgb(( (int)( ( (byte)( 35 ) ) ) ), ( (int)( ( (byte)( 147 ) ) ) ), ( (int)( ( (byte)( 195 ) ) ) ));
-            this.btnRefresh.PressColor = System.Drawing.Color.FromArgb(( (int)( ( (byte)( 35 ) ) ) ), ( (int)( ( (byte)( 147 ) ) ) ), ( (int)( ( (byte)( 195 ) ) ) ));
-            this.btnRefresh.PressTextColor = System.Drawing.Color.White;
-            this.btnRefresh.Size = new System.Drawing.Size(100, 40);
-            this.btnRefresh.Style = ReaLTaiizor.Enum.Metro.Style.Dark;
-            this.btnRefresh.StyleManager = this.metroStyleManager1;
-            this.btnRefresh.TabIndex = 1;
-            this.btnRefresh.Text = "새로고침";
-            this.btnRefresh.ThemeAuthor = "Taiizor";
-            this.btnRefresh.ThemeName = "MetroDark";
+            // 
+            // btnOpenLog
+            // 
+            this.btnOpenLog.DisabledBackColor = System.Drawing.Color.FromArgb(( (int)( ( (byte)( 120 ) ) ) ), ( (int)( ( (byte)( 65 ) ) ) ), ( (int)( ( (byte)( 177 ) ) ) ), ( (int)( ( (byte)( 225 ) ) ) ));
+            this.btnOpenLog.DisabledBorderColor = System.Drawing.Color.FromArgb(( (int)( ( (byte)( 120 ) ) ) ), ( (int)( ( (byte)( 65 ) ) ) ), ( (int)( ( (byte)( 177 ) ) ) ), ( (int)( ( (byte)( 225 ) ) ) ));
+            this.btnOpenLog.DisabledForeColor = System.Drawing.Color.Gray;
+            this.btnOpenLog.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnOpenLog.HoverBorderColor = System.Drawing.Color.FromArgb(( (int)( ( (byte)( 95 ) ) ) ), ( (int)( ( (byte)( 207 ) ) ) ), ( (int)( ( (byte)( 255 ) ) ) ));
+            this.btnOpenLog.HoverColor = System.Drawing.Color.FromArgb(( (int)( ( (byte)( 95 ) ) ) ), ( (int)( ( (byte)( 207 ) ) ) ), ( (int)( ( (byte)( 255 ) ) ) ));
+            this.btnOpenLog.HoverTextColor = System.Drawing.Color.White;
+            this.btnOpenLog.IsDerivedStyle = true;
+            this.btnOpenLog.Location = new System.Drawing.Point(15, 425);
+            this.btnOpenLog.Name = "btnOpenLog";
+            this.btnOpenLog.NormalBorderColor = System.Drawing.Color.FromArgb(( (int)( ( (byte)( 65 ) ) ) ), ( (int)( ( (byte)( 177 ) ) ) ), ( (int)( ( (byte)( 225 ) ) ) ));
+            this.btnOpenLog.NormalColor = System.Drawing.Color.FromArgb(( (int)( ( (byte)( 65 ) ) ) ), ( (int)( ( (byte)( 177 ) ) ) ), ( (int)( ( (byte)( 225 ) ) ) ));
+            this.btnOpenLog.NormalTextColor = System.Drawing.Color.White;
+            this.btnOpenLog.PressBorderColor = System.Drawing.Color.FromArgb(( (int)( ( (byte)( 35 ) ) ) ), ( (int)( ( (byte)( 147 ) ) ) ), ( (int)( ( (byte)( 195 ) ) ) ));
+            this.btnOpenLog.PressColor = System.Drawing.Color.FromArgb(( (int)( ( (byte)( 35 ) ) ) ), ( (int)( ( (byte)( 147 ) ) ) ), ( (int)( ( (byte)( 195 ) ) ) ));
+            this.btnOpenLog.PressTextColor = System.Drawing.Color.White;
+            this.btnOpenLog.Size = new System.Drawing.Size(100, 40);
+            this.btnOpenLog.Style = ReaLTaiizor.Enum.Metro.Style.Dark;
+            this.btnOpenLog.StyleManager = this.metroStyleManager1;
+            this.btnOpenLog.TabIndex = 1;
+            this.btnOpenLog.Text = "로그 보기";
+            this.btnOpenLog.ThemeAuthor = "Taiizor";
+            this.btnOpenLog.ThemeName = "MetroDark";
+            // 
+            // btnClose
+            // 
             this.btnClose.DisabledBackColor = System.Drawing.Color.FromArgb(( (int)( ( (byte)( 120 ) ) ) ), ( (int)( ( (byte)( 65 ) ) ) ), ( (int)( ( (byte)( 177 ) ) ) ), ( (int)( ( (byte)( 225 ) ) ) ));
             this.btnClose.DisabledBorderColor = System.Drawing.Color.FromArgb(( (int)( ( (byte)( 120 ) ) ) ), ( (int)( ( (byte)( 65 ) ) ) ), ( (int)( ( (byte)( 177 ) ) ) ), ( (int)( ( (byte)( 225 ) ) ) ));
             this.btnClose.DisabledForeColor = System.Drawing.Color.Gray;
@@ -104,6 +116,9 @@ namespace MyBatteryLogger
             this.btnClose.Text = "닫기";
             this.btnClose.ThemeAuthor = "Taiizor";
             this.btnClose.ThemeName = "MetroDark";
+            // 
+            // btnHide
+            // 
             this.btnHide.DisabledBackColor = System.Drawing.Color.FromArgb(( (int)( ( (byte)( 120 ) ) ) ), ( (int)( ( (byte)( 65 ) ) ) ), ( (int)( ( (byte)( 177 ) ) ) ), ( (int)( ( (byte)( 225 ) ) ) ));
             this.btnHide.DisabledBorderColor = System.Drawing.Color.FromArgb(( (int)( ( (byte)( 120 ) ) ) ), ( (int)( ( (byte)( 65 ) ) ) ), ( (int)( ( (byte)( 177 ) ) ) ), ( (int)( ( (byte)( 225 ) ) ) ));
             this.btnHide.DisabledForeColor = System.Drawing.Color.Gray;
@@ -128,6 +143,9 @@ namespace MyBatteryLogger
             this.btnHide.ThemeAuthor = "Taiizor";
             this.btnHide.ThemeName = "MetroDark";
             this.btnHide.Click += new System.EventHandler(this.btnHide_Click);
+            // 
+            // listView1
+            // 
             this.listView1.AutoSizeTable = false;
             this.listView1.BackColor = System.Drawing.Color.FromArgb(( (int)( ( (byte)( 255 ) ) ) ), ( (int)( ( (byte)( 255 ) ) ) ), ( (int)( ( (byte)( 255 ) ) ) ));
             this.listView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -147,12 +165,24 @@ namespace MyBatteryLogger
             this.listView1.TabIndex = 6;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
             this.columnHeader1.Text = "Time";
             this.columnHeader1.Width = 140;
+            // 
+            // columnHeader2
+            // 
             this.columnHeader2.Text = "Batt";
             this.columnHeader2.Width = 70;
+            // 
+            // columnHeader3
+            // 
             this.columnHeader3.Text = "PowerLine";
             this.columnHeader3.Width = 160;
+            // 
+            // ckbAutoRun
+            // 
             this.ckbAutoRun.BackColor = System.Drawing.Color.Transparent;
             this.ckbAutoRun.BackgroundColor = System.Drawing.Color.FromArgb(( (int)( ( (byte)( 30 ) ) ) ), ( (int)( ( (byte)( 30 ) ) ) ), ( (int)( ( (byte)( 30 ) ) ) ));
             this.ckbAutoRun.BorderColor = System.Drawing.Color.FromArgb(( (int)( ( (byte)( 155 ) ) ) ), ( (int)( ( (byte)( 155 ) ) ) ), ( (int)( ( (byte)( 155 ) ) ) ));
@@ -173,6 +203,9 @@ namespace MyBatteryLogger
             this.ckbAutoRun.Text = "부팅시 자동실행";
             this.ckbAutoRun.ThemeAuthor = "Taiizor";
             this.ckbAutoRun.ThemeName = "MetroDark";
+            // 
+            // ckbMinimalize
+            // 
             this.ckbMinimalize.BackColor = System.Drawing.Color.Transparent;
             this.ckbMinimalize.BackgroundColor = System.Drawing.Color.FromArgb(( (int)( ( (byte)( 30 ) ) ) ), ( (int)( ( (byte)( 30 ) ) ) ), ( (int)( ( (byte)( 30 ) ) ) ));
             this.ckbMinimalize.BorderColor = System.Drawing.Color.FromArgb(( (int)( ( (byte)( 155 ) ) ) ), ( (int)( ( (byte)( 155 ) ) ) ), ( (int)( ( (byte)( 155 ) ) ) ));
@@ -193,6 +226,9 @@ namespace MyBatteryLogger
             this.ckbMinimalize.Text = "실행시 최소화";
             this.ckbMinimalize.ThemeAuthor = "Taiizor";
             this.ckbMinimalize.ThemeName = "MetroDark";
+            // 
+            // MyBatteryLoggerForm
+            // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundColor = System.Drawing.Color.FromArgb(( (int)( ( (byte)( 30 ) ) ) ), ( (int)( ( (byte)( 30 ) ) ) ), ( (int)( ( (byte)( 30 ) ) ) ));
@@ -202,7 +238,7 @@ namespace MyBatteryLogger
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.btnHide);
             this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.btnRefresh);
+            this.Controls.Add(this.btnOpenLog);
             this.Controls.Add(this.lblPrecentage);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MyBatteryLoggerForm";
@@ -227,7 +263,7 @@ namespace MyBatteryLogger
         private ReaLTaiizor.Controls.MetroButton btnHide;
 
         private ReaLTaiizor.Controls.MetroLabel lblPrecentage;
-        private ReaLTaiizor.Controls.MetroButton btnRefresh;
+        private ReaLTaiizor.Controls.MetroButton btnOpenLog;
         private ReaLTaiizor.Controls.MetroButton btnClose;
 
         private ReaLTaiizor.Manager.MetroStyleManager metroStyleManager1;
