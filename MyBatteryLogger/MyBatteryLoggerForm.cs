@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
@@ -59,10 +60,9 @@ namespace MyBatteryLogger
     public partial class MyBatteryLoggerForm : MetroForm
     {
         #region field
-        private bool _working = false;
+        private bool _working;
         
         private readonly IConfigHandler _configHandler = new ConfigHanler();
-        private string[] configKeyArr = new[] { "AutoRun", "Minimalize" };
         
         private byte pastBatteryLifePercent = 255;
         private PowerLineStatus pastPowerLineStatus = PowerLineStatus.Unknown;
@@ -124,10 +124,9 @@ namespace MyBatteryLogger
             }
             else
             {
-                foreach (KeyValuePair<string, bool> VARIABLE in configDic)
+                foreach (var VARIABLE in configDic.Where(VARIABLE => VARIABLE.Value))
                 {
-                    if (VARIABLE.Value)
-                        ProcessConfig(VARIABLE.Key);
+                    ProcessConfig(VARIABLE.Key);
                 }
             }
             #endregion
@@ -192,7 +191,8 @@ namespace MyBatteryLogger
         /// <param name="e"></param>
         private void BtnOpenLog_Click(object sender, EventArgs e)
         {
-            Process.Start(fullLogPath);
+            // Process.Start(fullLogPath);  // 로그 파일 열기
+            Process.Start(logPath); // 로그 저장 폴더 열기
         }
 
         /// <summary>
